@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectosComidaFormsApp1", "ProyectosComidaFormsApp1\ProyectosComidaFormsApp1.csproj", "{63C66AD8-9D4D-485B-BED8-2048EDF7BE0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{2994C455-E2F1-46C6-8074-728F6F67D61A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63C66AD8-9D4D-485B-BED8-2048EDF7BE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C66AD8-9D4D-485B-BED8-2048EDF7BE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C66AD8-9D4D-485B-BED8-2048EDF7BE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C66AD8-9D4D-485B-BED8-2048EDF7BE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58A97584-C3AD-4993-81D1-5A71D9C834D5}
+	EndGlobalSection
+EndGlobal
