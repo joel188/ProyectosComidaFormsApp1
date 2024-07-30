@@ -4,51 +4,86 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace RegistrodePedidoFormsApp1
 {
     public partial class ListadeCuentas : Form
     {
-        private List<Cuenta> cuentas;
+      
+            public List<Cuenta> cuentas;
+            
+            public ListadeCuentas()
+            {
+                InitializeComponent();
+                cuentas = new List<Cuenta>();
+            
+                cuentas.Add(new Cuenta(
+                    "kevin ordoñes", "2547-9963","jessica nevera","4725-8801","Langosta","Choluteca","3. Estrellas"
+                    ));
+                bindingSource.DataSource = cuentas;
+            }
 
-        public ListadeCuentas()
-        {
-            InitializeComponent();
-            cuentas = new List<Cuenta>();
-
-            this.bindingSource1.DataSource = cuentas;
-        }
+        internal List<Cuenta> Cuentas { get => cuentas; set => cuentas = value; }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+        /**
+        NomEmptxt = nomEmptxt;
+            NumEmptxt = numEmptxt;
+            NombClientxt = nombClientxt;
+            NumClientxt = numClientxt;
+            ComboMenu = comboMenu;
+            Ubicaciontxt = ubicaciontxt;
+            ComboCalificacion = comboCalificacion;
+        **/
 
-        private void Nuevobtn_Click(object sender, EventArgs e)
+
+        
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            FrmCuenta frmCuenta = new FrmCuenta();
-            frmCuenta.ShowDialog();
-
-            if (frmCuenta.IsConfirmed == true)
+            if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                Cuenta Nuevo = new Cuenta(
-                this.cuentas.Count + 1,
-                frmCuenta.CuentNomEmptxt,
-                frmCuenta.CuentNumEmptxt,
-                frmCuenta.CuentNombClientxt,
-                frmCuenta.CuentNumClientxt,
-                frmCuenta.CuentComboMenu,
-                frmCuenta.CuentUbicaciontxt1,
-                frmCuenta.CuentComboCalificacion
+                String ArchivoGuardar = saveDialog.FileName;
+                XmlSerializer serializador = new XmlSerializer(
+                    typeof(List<Cuenta>)
                 );
-                this.cuentas.Add( Nuevo );
+                StreamWriter guardador = new StreamWriter(ArchivoGuardar);
+                serializador.Serialize(guardador, cuentas);
+                MessageBox.Show("Archivo Guardardo Exictosamente");
             }
-            this.bindingSource1.DataSource = this.cuentas;
-            frmCuenta = null;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            AgregarCuentas frmAgregar = new AgregarCuentas();
+            if(frmAgregar.ShowDialog() == DialogResult.OK)
+            {
+                bindingSource.Add(
+                    new Cuenta(
+                        frmAgregar.Cuenta.NomEmptxt,
+                        frmAgregar.Cuenta.NumEmptxt,
+                        frmAgregar.Cuenta.NombClientxt,
+                        frmAgregar.Cuenta.NumClientxt,
+                        frmAgregar.Cuenta.ComboMenu,
+                        frmAgregar.Cuenta.Ubicaciontxt,
+                        frmAgregar.Cuenta.ComboCalificacion)
+                );
+               frmAgregar = null;
+            }
         }
     }
 }

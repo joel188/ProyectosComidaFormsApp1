@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrodePedidoFormsApp1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace ProyectosComidaFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmGeneradorCuenta());
+            Application.Run(new ListadeCuentas());
         }
     }
 }
